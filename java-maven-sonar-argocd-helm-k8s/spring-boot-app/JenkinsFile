@@ -11,7 +11,7 @@ pipeline {
       steps {
         sh 'ls -ltr'
         // build the project and create a JAR file
-        withEnv(['PATH=${M2_HOME}/bin:$PATH']) {
+        withEnv(['PATH+EXTRA=${M2_HOME}/bin']) {
           sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && mvn clean install'
         }
       }
