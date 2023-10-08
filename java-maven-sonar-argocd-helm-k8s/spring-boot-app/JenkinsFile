@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        sh 'echo passed'
+        echo 'passed'
         git branch: 'dev', url: 'https://github.com/aman4433/Jenkins-Zero-To-Hero.git'
       }
     }
@@ -11,7 +11,9 @@ pipeline {
       steps {
         sh 'ls -ltr'
         // build the project and create a JAR file
-        sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && mvn clean install'
+        withEnv(['PATH=${M2_HOME}/bin:$PATH']) {
+          sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && mvn clean install'
+        }
       }
     }
   }
