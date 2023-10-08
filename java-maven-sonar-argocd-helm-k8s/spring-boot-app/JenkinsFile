@@ -20,7 +20,7 @@ pipeline {
         sh 'ls -ltr'
 
         // Build the project and create a JAR file
-        sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && mvn clean install'
+        sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && /opt/maven/bin/mvn clean install'
       }
     }
   }
