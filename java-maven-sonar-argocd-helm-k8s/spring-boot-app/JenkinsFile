@@ -9,10 +9,17 @@ pipeline {
     }
     stage('Build and Test') {
       steps {
+        // Export M2_HOME and PATH
         sh 'export M2_HOME=/opt/maven'
         sh 'export PATH=${M2_HOME}/bin:${PATH}'
+
+        // Print Maven version
+        sh 'mvn -version'
+
+        // List the contents of the current directory
         sh 'ls -ltr'
-        // build the project and create a JAR file
+
+        // Build the project and create a JAR file
         sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && mvn clean install'
       }
     }
