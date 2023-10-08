@@ -1,12 +1,12 @@
 pipeline {
   agent any
-  stages {
-    preBuild {
-      steps {
-        sh 'export M2_HOME=/opt/maven'
-        sh 'export PATH=${M2_HOME}/bin:${PATH}'
-      }
+  preBuild {
+    steps {
+      sh 'export M2_HOME=/opt/maven'
+      sh 'export PATH=${M2_HOME}/bin:${PATH}'
     }
+  }
+  stages {
     stage('Checkout') {
       steps {
         echo 'passed'
