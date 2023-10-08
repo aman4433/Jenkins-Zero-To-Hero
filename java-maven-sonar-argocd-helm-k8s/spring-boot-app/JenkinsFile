@@ -1,11 +1,5 @@
 pipeline {
   agent any
-  preBuild {
-    steps {
-      sh 'export M2_HOME=/opt/maven'
-      sh 'export PATH=${M2_HOME}/bin:${PATH}'
-    }
-  }
   stages {
     stage('Checkout') {
       steps {
@@ -15,6 +9,8 @@ pipeline {
     }
     stage('Build and Test') {
       steps {
+        sh 'export M2_HOME=/opt/maven'
+        sh 'export PATH=${M2_HOME}/bin:${PATH}'
         sh 'ls -ltr'
         // build the project and create a JAR file
         sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && mvn clean install'
